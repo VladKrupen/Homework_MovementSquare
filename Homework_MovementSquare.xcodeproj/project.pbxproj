@@ -13,6 +13,8 @@
 		0136D4EE2B24750600201B37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0136D4EC2B24750600201B37 /* Main.storyboard */; };
 		0136D4F02B24750800201B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0136D4EF2B24750800201B37 /* Assets.xcassets */; };
 		0136D4F32B24750800201B37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0136D4F12B24750800201B37 /* LaunchScreen.storyboard */; };
+		0136D4FB2B24764400201B37 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136D4FA2B24764400201B37 /* UIViewController+extension.swift */; };
+		0136D4FD2B24791B00201B37 /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136D4FC2B24791A00201B37 /* JoystickView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0136D4EF2B24750800201B37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0136D4F22B24750800201B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0136D4F42B24750800201B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0136D4FA2B24764400201B37 /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
+		0136D4FC2B24791A00201B37 /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				0136D4E62B24750600201B37 /* AppDelegate.swift */,
 				0136D4E82B24750600201B37 /* SceneDelegate.swift */,
 				0136D4EA2B24750600201B37 /* ViewController.swift */,
+				0136D4FC2B24791A00201B37 /* JoystickView.swift */,
+				0136D4FA2B24764400201B37 /* UIViewController+extension.swift */,
 				0136D4EC2B24750600201B37 /* Main.storyboard */,
 				0136D4EF2B24750800201B37 /* Assets.xcassets */,
 				0136D4F12B24750800201B37 /* LaunchScreen.storyboard */,
@@ -138,8 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0136D4FB2B24764400201B37 /* UIViewController+extension.swift in Sources */,
 				0136D4EB2B24750600201B37 /* ViewController.swift in Sources */,
 				0136D4E72B24750600201B37 /* AppDelegate.swift in Sources */,
+				0136D4FD2B24791B00201B37 /* JoystickView.swift in Sources */,
 				0136D4E92B24750600201B37 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
