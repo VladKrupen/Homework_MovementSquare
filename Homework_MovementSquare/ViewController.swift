@@ -8,11 +8,11 @@
 import UIKit
 import SwiftUI
 
-//struct ViewControllerProvider: PreviewProvider {
-//    static var previews: some View {
-//        ViewController().showPreview()
-//    }
-//}
+struct ViewControllerProvider: PreviewProvider {
+    static var previews: some View {
+        ViewController().showPreview()
+    }
+}
 
 class ViewController: UIViewController {
     
@@ -31,6 +31,16 @@ class ViewController: UIViewController {
         return movingView
     }()
     
+    var buttonStartAgain = {
+        let buttonStartAgain = UIButton()
+        buttonStartAgain.translatesAutoresizingMaskIntoConstraints = false
+        buttonStartAgain.setTitle("Start again", for: .normal)
+        buttonStartAgain.setTitleColor(.blue, for: .normal)
+        buttonStartAgain.alpha = 0
+        
+        return buttonStartAgain
+    }()
+    
     var originalPointMovingView: CGRect!
     var moveStep: CGFloat!
     
@@ -39,6 +49,7 @@ class ViewController: UIViewController {
         
         setupJoystickView()
         setupMovingView()
+        setupButtonStartAgain()
       
     }
 
@@ -56,7 +67,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1) {
                 self!.movingView.center.y = self!.movingView.center.y - self!.moveStep
             } completion: { _ in
-                UIView.animate(withDuration: 1) {
+                UIView.animate(withDuration: 0.3) {
                     self!.disappearingJoystick()
                 }
             }
@@ -67,7 +78,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1) {
                 self!.movingView.center.y = self!.movingView.center.y + self!.moveStep
             } completion: { _ in
-                UIView.animate(withDuration: 1) {
+                UIView.animate(withDuration: 0.3) {
                     self!.disappearingJoystick()
                 }
             }
@@ -77,7 +88,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1) {
                 self!.movingView.center.x = self!.movingView.center.x - self!.moveStep
             } completion: { _ in
-                UIView.animate(withDuration: 1) {
+                UIView.animate(withDuration: 0.3) {
                     self!.disappearingJoystick()
                 }
             }
@@ -87,7 +98,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1) {
                 self!.movingView.center.x = self!.movingView.center.x + self!.moveStep
             } completion: { _ in
-                UIView.animate(withDuration: 1) {
+                UIView.animate(withDuration: 0.3) {
                     self!.disappearingJoystick()
                 }
             }
@@ -95,6 +106,17 @@ class ViewController: UIViewController {
         
        
         
+    }
+    
+    func setupButtonStartAgain() {
+        view.addSubview(buttonStartAgain)
+
+        NSLayoutConstraint.activate([
+            buttonStartAgain.centerXAnchor.constraint(equalTo: joystickView.centerXAnchor),
+            buttonStartAgain.centerYAnchor.constraint(equalTo: joystickView.centerYAnchor)
+        ])
+        
+        buttonStartAgain.addTarget(self, action: #selector(buttonStartAgainTapped), for: .touchUpInside)
     }
     
     func setupMovingView() {
@@ -107,26 +129,40 @@ class ViewController: UIViewController {
     
     func disappearingJoystick() {
         if self.movingView.frame.intersects(self.joystickView.frame) == true {
-            self.joystickView.isHidden = true
+            self.joystickView.alpha = 0
+            buttonStartAgain.alpha = 1
         }
         
         if self.movingView.frame.minX <= self.view.safeAreaLayoutGuide.layoutFrame.minX {
-            self.joystickView.isHidden = true
+            self.joystickView.alpha = 0
+            buttonStartAgain.alpha = 1
         }
         
         if self.movingView.frame.maxX >= self.view.safeAreaLayoutGuide.layoutFrame.maxX {
-            self.joystickView.isHidden = true
+            self.joystickView.alpha = 0
+            buttonStartAgain.alpha = 1
         }
         
         if self.movingView.frame.minY <= self.view.safeAreaLayoutGuide.layoutFrame.minY {
-            self.joystickView.isHidden = true
+            self.joystickView.alpha = 0
+            buttonStartAgain.alpha = 1
         }
         
         if self.movingView.frame.maxY >= self.view.safeAreaLayoutGuide.layoutFrame.maxY {
-            self.joystickView.isHidden = true
+            self.joystickView.alpha = 0
+            buttonStartAgain.alpha = 1
         }
         
         
+    }
+    
+    
+    @objc func buttonStartAgainTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 1) {
+            self.buttonStartAgain.alpha = 0
+            self.joystickView.alpha = 1
+            self.movingView.frame = self.originalPointMovingView
+        }
     }
     
     
