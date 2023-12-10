@@ -13,6 +13,7 @@ struct ViewControllerProvider: PreviewProvider {
         ViewController().showPreview()
     }
 }
+//#Preview
 
 class ViewController: UIViewController {
     
@@ -128,7 +129,7 @@ class ViewController: UIViewController {
     }
     
     func disappearingJoystick() {
-        if self.movingView.frame.intersects(self.joystickView.frame) == true {
+        if self.movingView.frame.intersects(self.joystickView.frame) {
             self.joystickView.alpha = 0
             buttonStartAgain.alpha = 1
         }
